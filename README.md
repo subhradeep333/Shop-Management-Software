@@ -1,130 +1,250 @@
 # 🏪 Local Shop Management System
 
-A Command-Line Interface (CLI) based **Local Shop Management System** developed using **Python** and **MySQL**. This project helps small local shop owners manage products, customers, sales, and inventory efficiently through a simple terminal interface.
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.14-blue?style=for-the-badge&logo=python)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange?style=for-the-badge&logo=mysql)
+![CLI](https://img.shields.io/badge/Interface-Command%20Line-success?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+</p>
+
+A **CLI-based Local Shop Management Software** built using **Python** and **MySQL**. The application is designed to help small retail shops efficiently manage products, customers, inventory, and sales through a simple and user-friendly command-line interface.
 
 ---
 
-## 📌 Features
+# 📖 Table of Contents
 
-- 📦 Product Management
-  - Add new products
-  - Update product details
-  - Delete products
-  - View all products
-  - Search products
-
-- 🛒 Inventory Management
-  - Track available stock
-  - Update stock after every sale
-  - Low stock alerts
-
-- 💰 Sales Management
-  - Create new sales
-  - Automatic bill generation
-  - Calculate total amount
-  - Update inventory automatically
-
-- 👥 Customer Management
-  - Add customers
-  - View customer details
-  - Purchase history
-
-- 📊 Reports
-  - Total sales report
-  - Daily sales
-  - Product-wise sales
-  - Inventory report
-
-- 🔐 Admin Login
-  - Secure authentication
-  - Password protected access
+- Overview
+- Features
+- Technology Stack
+- Project Structure
+- Database Design
+- Installation
+- Usage
+- Future Enhancements
+- Learning Outcomes
+- Contributing
+- License
+- Author
 
 ---
 
-## 🛠️ Tech Stack
+# 📌 Overview
+
+Managing a local retail shop manually can be difficult and time-consuming. This software automates daily business operations such as inventory tracking, customer management, sales processing, and report generation.
+
+The application follows a modular architecture, making it easy to maintain, extend, and upgrade to a GUI version in the future.
+
+---
+
+# ✨ Features
+
+## 🔐 Authentication
+
+- Secure Admin Login
+- Password Protected Access
+
+---
+
+## 📦 Product Management
+
+- Add Products
+- Update Products
+- Delete Products
+- View Products
+- Search Products
+
+---
+
+## 👥 Customer Management
+
+- Add Customers
+- View Customer Details
+- Search Customers
+- Customer Purchase History
+
+---
+
+## 💰 Sales Management
+
+- Generate Bills
+- Automatic Total Calculation
+- Store Sales Records
+- Update Inventory Automatically
+
+---
+
+## 📦 Inventory Management
+
+- Track Product Stock
+- Low Stock Alerts
+- Restock Products
+
+---
+
+## 📊 Reports
+
+- Daily Sales Report
+- Overall Sales Report
+- Product-wise Sales
+- Inventory Report
+
+---
+
+# 🛠 Technology Stack
 
 | Technology | Purpose |
 |------------|---------|
-| Python | Backend Logic |
-| MySQL | Database |
+| Python | Backend Development |
+| MySQL | Database Management |
 | mysql-connector-python | Database Connectivity |
 | CLI | User Interface |
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```
 Local-Shop-Management-System/
 │
+├── .gitignore
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── main.py
+│
 ├── database/
+│   ├── __init__.py
 │   ├── schema.sql
-│   └── sample_data.sql
+│   └── db_connection.py
 │
 ├── modules/
+│   ├── __init__.py
+│   ├── auth.py
 │   ├── product.py
 │   ├── customer.py
 │   ├── sales.py
 │   ├── inventory.py
-│   ├── auth.py
-│   └── database.py
+│   └── reports.py
 │
-├── main.py
-├── requirements.txt
-├── README.md
-└── LICENSE
+├── utils/
+│   ├── menu.py
+│   ├── validation.py
+│   ├── helper.py
+│   └── bill.py
+│
+├── config/
+│   └── config.py
+│
+├── data/
+│   └── invoices/
+│
+└── screenshots/
 ```
 
 ---
 
-## ⚙️ Installation
+# 🗄 Database Tables
 
-### 1. Clone the repository
+- Admin
+- Products
+- Customers
+- Sales
+- Sales_Items
+
+---
+
+# ⚙ Installation
+
+## 1. Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/Local-Shop-Management-System.git
+git clone https://github.com/subhradeep333/Local-Shop-Management-System.git
 ```
 
-### 2. Navigate into the project
+---
+
+## 2. Navigate to Project
 
 ```bash
 cd Local-Shop-Management-System
 ```
 
-### 3. Install dependencies
+---
+
+## 3. Create Virtual Environment
+
+### Windows
+
+```bash
+python -m venv .venv
+```
+
+### macOS / Linux
+
+```bash
+python3 -m venv .venv
+```
+
+---
+
+## 4. Activate Virtual Environment
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+### macOS / Linux
+
+```bash
+source .venv/bin/activate
+```
+
+---
+
+## 5. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Create the MySQL Database
+---
+
+## 6. Create MySQL Database
 
 ```sql
 CREATE DATABASE local_shop;
 ```
 
-Import the SQL file:
+Import the schema:
 
 ```bash
 mysql -u root -p local_shop < database/schema.sql
 ```
 
-### 5. Configure Database
+---
 
-Update the MySQL credentials inside:
+## 7. Configure Database
 
-```python
-database.py
+Update the database credentials inside:
+
+```
+database/db_connection.py
 ```
 
 ```python
-host="localhost"
-user="root"
-password="your_password"
-database="local_shop"
+HOST = "localhost"
+USER = "root"
+PASSWORD = "your_password"
+DATABASE = "local_shop"
 ```
 
-### 6. Run the project
+---
+
+## 8. Run the Application
 
 ```bash
 python main.py
@@ -132,70 +252,79 @@ python main.py
 
 ---
 
-## 📸 Sample Menu
+# 💻 Sample Menu
 
 ```
-=============================
- LOCAL SHOP MANAGEMENT SYSTEM
-=============================
+=====================================
+     LOCAL SHOP MANAGEMENT SYSTEM
+=====================================
 
 1. Product Management
 2. Customer Management
-3. Sales
-4. Inventory
+3. Sales Management
+4. Inventory Management
 5. Reports
 6. Exit
 
-Enter Choice:
+Enter Your Choice:
 ```
 
 ---
 
-## 📊 Database Tables
+# 📷 Screenshots
 
-- Products
-- Customers
-- Sales
-- Sales_Items
-- Inventory
-- Admin
+```
+screenshots/
+│
+├── login.png
+├── dashboard.png
+├── products.png
+├── sales.png
+└── reports.png
+```
+
+*(Add screenshots once the project is completed.)*
 
 ---
 
-## 🚀 Future Enhancements
+# 🚀 Future Enhancements
 
-- GUI Version (Tkinter)
-- Barcode Scanner Support
-- Invoice PDF Generation
-- GST Billing
-- Supplier Management
-- Multi-user Login
-- Dashboard Analytics
-- Cloud Database Integration
+- ✅ Tkinter GUI Version
+- Barcode Scanner Integration
 - QR Code Billing
+- GST Invoice Generation
+- PDF Invoice Export
+- Supplier Management
+- Dashboard Analytics
+- Multi-user Authentication
+- Email Invoice Support
+- Cloud Database Integration
 
 ---
 
-## 🎯 Learning Outcomes
+# 🎯 Learning Outcomes
 
-Through this project, I learned:
+This project helped me gain practical experience in:
 
 - Python Programming
+- Object-Oriented Programming
 - MySQL Database Design
 - CRUD Operations
-- Database Connectivity using mysql-connector
+- SQL Queries
+- Database Connectivity
 - Modular Programming
+- Exception Handling
+- Inventory Management
 - CLI Application Development
-- Error Handling
-- Inventory Management Logic
 
 ---
 
-## 🤝 Contributing
+# 🤝 Contributing
 
-Contributions are welcome!
+Contributions are welcome.
 
 1. Fork the repository
+
 2. Create a new branch
 
 ```bash
@@ -205,10 +334,10 @@ git checkout -b feature-name
 3. Commit your changes
 
 ```bash
-git commit -m "Added new feature"
+git commit -m "Add new feature"
 ```
 
-4. Push to your branch
+4. Push to GitHub
 
 ```bash
 git push origin feature-name
@@ -218,19 +347,26 @@ git push origin feature-name
 
 ---
 
-## 📄 License
+# 📜 License
 
-This project is licensed under the MIT License.
-
----
-
-## 👨‍💻 Author
-
-**Subhradeep Roy Chowdhury**
-
-- GitHub: https://github.com/subhradeep333
-- LinkedIn: https://www.linkedin.com/in/subhradeep333
+This project is licensed under the **MIT License**.
 
 ---
 
-### ⭐ If you found this project helpful, don't forget to Star this repository!
+# 👨‍💻 Author
+
+## **Subhradeep Roy Chowdhury**
+
+**BCA Student | Python Developer | Java Enthusiast**
+
+🔗 GitHub: https://github.com/subhradeep333
+
+🔗 LinkedIn: https://www.linkedin.com/in/subhradeep333
+
+---
+
+<p align="center">
+
+⭐ If you like this project, consider giving it a Star!
+
+</p>
