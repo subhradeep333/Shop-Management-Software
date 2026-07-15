@@ -160,7 +160,7 @@ Local-Shop-Management-System/
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/subhradeep333/Local-Shop-Management-System.git
+git clone https://github.com/subhradeep333/Local-Shop-Management-Software.git
 ```
 
 ---
@@ -168,7 +168,7 @@ git clone https://github.com/subhradeep333/Local-Shop-Management-System.git
 ## 2. Navigate to Project
 
 ```bash
-cd Local-Shop-Management-System
+cd Local-Shop-Management-Software
 ```
 
 ---
