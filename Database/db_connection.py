@@ -1,20 +1,13 @@
-# database/db_connection.py
-
 import mysql.connector
 from mysql.connector import Error
 
-# ==========================
-# Database Configuration
-# ==========================
 HOST = "localhost"
 USER = "root"
-PASSWORD = "subhradeep3"      # Replace with your MySQL password
+PASSWORD = "subhradeep3"      
 DATABASE = "local_shop"
 
 
-# ==========================
-# Create Database Connection
-# ==========================
+
 def get_connection():
     """
     Creates and returns a connection to the MySQL database.
@@ -39,9 +32,7 @@ def get_connection():
         return None
 
 
-# ==========================
-# Close Database Connection
-# ==========================
+
 def close_connection(connection):
     """
     Closes the database connection safely.
@@ -50,9 +41,6 @@ def close_connection(connection):
         connection.close()
 
 
-# ==========================
-# Test Connection
-# ==========================
 if __name__ == "__main__":
     conn = get_connection()
 
