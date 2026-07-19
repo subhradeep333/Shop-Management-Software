@@ -1,4 +1,4 @@
-from config.database import get_connection
+from Database.db_connection import get_connection
 
 
 # Add Product
