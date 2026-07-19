@@ -6,8 +6,7 @@ from Models.sales import *
 from Models.inventory import *
 
 from Reports.report import *
-from Reports.sales_chart import *
-
+from Reports.sales_chart import sales_chart
 
 print("=" * 50)
 print("      LOCAL SHOP MANAGEMENT SYSTEM")
@@ -28,7 +27,8 @@ if login():
 
         choice = input("Enter your choice: ")
 
-        # Product Menu
+        # ---------------- PRODUCT ---------------- #
+
         if choice == "1":
 
             print("\n1. Add Product")
@@ -37,7 +37,7 @@ if login():
             print("4. Delete Product")
             print("5. Search Product")
 
-            option = input("Choose: ")
+            option = input("Enter your choice: ")
 
             if option == "1":
                 name = input("Product Name: ")
@@ -63,7 +63,8 @@ if login():
                 name = input("Product Name: ")
                 search_product(name)
 
-        # Customer Menu
+        # ---------------- CUSTOMER ---------------- #
+
         elif choice == "2":
 
             print("\n1. Add Customer")
@@ -72,7 +73,7 @@ if login():
             print("4. Delete Customer")
             print("5. Search Customer")
 
-            option = input("Choose: ")
+            option = input("Enter your choice: ")
 
             if option == "1":
                 name = input("Customer Name: ")
@@ -97,7 +98,8 @@ if login():
                 name = input("Customer Name: ")
                 search_customer(name)
 
-        # Sales Menu
+        # ---------------- SALES ---------------- #
+
         elif choice == "3":
 
             print("\n1. Add Sale")
@@ -105,7 +107,7 @@ if login():
             print("3. Delete Sale")
             print("4. Search Sale")
 
-            option = input("Choose: ")
+            option = input("Enter your choice: ")
 
             if option == "1":
                 pid = int(input("Product ID: "))
@@ -125,7 +127,8 @@ if login():
                 sid = int(input("Sale ID: "))
                 search_sale(sid)
 
-        # Inventory Menu
+        # ---------------- INVENTORY ---------------- #
+
         elif choice == "4":
 
             print("\n1. Add Stock")
@@ -133,7 +136,7 @@ if login():
             print("3. View Stock")
             print("4. Low Stock")
 
-            option = input("Choose: ")
+            option = input("Enter your choice: ")
 
             if option == "1":
                 pid = int(input("Product ID: "))
@@ -151,7 +154,8 @@ if login():
             elif option == "4":
                 low_stock()
 
-        # Reports
+        # ---------------- REPORTS ---------------- #
+
         elif choice == "5":
 
             print("\n1. Total Products")
@@ -159,7 +163,7 @@ if login():
             print("3. Total Sales")
             print("4. Sales Report")
 
-            option = input("Choose: ")
+            option = input("Enter your choice: ")
 
             if option == "1":
                 total_products()
@@ -173,30 +177,19 @@ if login():
             elif option == "4":
                 sales_report()
 
-        # Charts
+        # ---------------- CHARTS ---------------- #
+
         elif choice == "6":
+            sales_chart()
 
-            print("\n1. Product Stock Chart")
-            print("2. Sales Amount Chart")
-            print("3. Stock Distribution Chart")
-
-            option = input("Choose: ")
-
-            if option == "1":
-                product_sales_chart()
-
-            elif option == "2":
-                sales_amount_chart()
-
-            elif option == "3":
-                stock_chart()
+        # ---------------- EXIT ---------------- #
 
         elif choice == "7":
-            print("Thank you for using the Shop Management System.")
+            print("\nThank you for using the Local Shop Management System.")
             break
 
         else:
             print("Invalid Choice!")
 
 else:
-    print("Access Denied.")
+    print("Login Failed!")

@@ -1,96 +1,51 @@
-from Database.db_connection import get_connection
 import matplotlib.pyplot as plt
 
+def sales_chart():
 
-# Bar Chart - Product Sales
-def product_sales_chart():
+    print("\n===== Sales Chart =====")
+    print("1. Monthly Sales")
+    print("2. Yearly Sales")
 
-    connection = get_connection()
-    cursor = connection.cursor()
+    choice = input("Enter your choice: ")
 
-    query = """
-    SELECT product_name, stock
-    FROM products
-    """
+    labels = []
+    sales = []
 
-    cursor.execute(query)
+    if choice == "1":
 
-    data = cursor.fetchall()
+        n = int(input("How many months do you want to enter? "))
 
-    product = []
-    stock = []
+        for i in range(n):
+            month = input(f"Enter Month {i+1}: ")
+            amount = float(input(f"Enter sales for {month}: ₹"))
 
-    for row in data:
-        product.append(row[0])
-        stock.append(row[1])
+            labels.append(month)
+            sales.append(amount)
 
-    plt.bar(product, stock)
+        plt.plot(labels, sales, marker="o")
+        plt.title("Monthly Sales")
+        plt.xlabel("Months")
+        plt.ylabel("Sales Amount (₹)")
+        plt.grid(True)
+        plt.show()
 
-    plt.title("Product Stock")
-    plt.xlabel("Products")
-    plt.ylabel("Stock")
+    elif choice == "2":
 
-    plt.show()
+        n = int(input("How many years do you want to enter? "))
 
-    cursor.close()
-    connection.close()
+        for i in range(n):
+            year = input(f"Enter Year {i+1}: ")
+            amount = float(input(f"Enter sales for {year}: ₹"))
 
+            labels.append(year)
+            sales.append(amount)
 
-# Line Chart - Sales Amount
-def sales_amount_chart():
+        plt.bar(labels, sales)
 
-    connection = get_connection()
-    cursor = connection.cursor()
+        plt.title("Yearly Sales")
+        plt.xlabel("Years")
+        plt.ylabel("Sales Amount (₹)")
+        plt.show()
 
-    query = "SELECT sale_id, total_amount FROM sales"
-
-    cursor.execute(query)
-
-    data = cursor.fetchall()
-
-    sale = []
-    amount = []
-
-    for row in data:
-        sale.append(row[0])
-        amount.append(row[1])
-
-    plt.plot(sale, amount, marker="o")
-
-    plt.title("Sales Amount")
-    plt.xlabel("Sale ID")
-    plt.ylabel("Amount")
-
-    plt.show()
-
-    cursor.close()
-    connection.close()
-
-
-# Pie Chart - Stock Distribution
-def stock_chart():
-
-    connection = get_connection()
-    cursor = connection.cursor()
-
-    query = "SELECT product_name, stock FROM products"
-
-    cursor.execute(query)
-
-    data = cursor.fetchall()
-
-    product = []
-    stock = []
-
-    for row in data:
-        product.append(row[0])
-        stock.append(row[1])
-
-    plt.pie(stock, labels=product, autopct="%1.1f%%")
-
-    plt.title("Stock Distribution")
-
-    plt.show()
-
-    cursor.close()
-    connection.close()
+    else:
+        print("Invalid Choice!")
