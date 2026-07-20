@@ -1,6 +1,5 @@
 from Database.db_connection import get_connection, close_connection
 
-
 def login():
     """
     Authenticate the admin user.
