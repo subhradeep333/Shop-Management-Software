@@ -1,33 +1,20 @@
 from Database.db_connection import get_connection, close_connection
 
 def login():
-    """
-    Authenticate the admin user.
-    Returns:
-        True  -> Login Successful
-        False -> Login Failed
-    """
+    print("\n===== ADMIN LOGIN =====")
 
-    print("\n" + "=" * 40)
-    print("         ADMIN LOGIN")
-    print("=" * 40)
-
-    username = input("Username: ").strip()
-    password = input("Password: ").strip()
+    username = input("Enter Username: ")
+    password = input("Enter Password: ")
 
     connection = get_connection()
 
     if connection is None:
-        print("\n❌ Database Connection Failed!")
+        print("Database Connection Failed!")
         return False
 
     cursor = connection.cursor()
 
-    query = """
-    SELECT username, password
-    FROM admin
-    WHERE username = %s
-    """
+    query = "SELECT username, password FROM admin WHERE username = %s"
 
     cursor.execute(query, (username,))
 
@@ -37,16 +24,14 @@ def login():
     close_connection(connection)
 
     if admin is None:
-        print("\n❌ Username does not exist.")
+        print("Username not found!")
         return False
 
-    db_username, db_password = admin
-
-    if password == db_password:
-        print("\n✅ Login Successful!")
+    if password == admin[1]:
+        print("Login Successful!")
         return True
     else:
-        print("\n❌ Incorrect Password.")
+        print("Incorrect Password!")
         return False
 
 
